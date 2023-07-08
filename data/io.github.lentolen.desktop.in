@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=colortools-gui
+Exec=colortools-gui
+Icon=io.github.lentolen
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true

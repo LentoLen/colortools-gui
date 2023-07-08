@@ -1,0 +1,6 @@
+data/io.github.lentolen.desktop.in
+data/io.github.lentolen.appdata.xml.in
+data/io.github.lentolen.gschema.xml
+src/main.py
+src/window.py
+src/window.ui

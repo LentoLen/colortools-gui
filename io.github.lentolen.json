@@ -1,0 +1,71 @@
+{
+    "app-id" : "io.github.lentolen",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "master",
+    "sdk" : "org.gnome.Sdk",
+    "command" : "colortools-gui",
+    "finish-args" : [
+        "--share=network",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--device=dri",
+        "--socket=wayland"
+    ],
+    "cleanup" : [
+        "/include",
+        "/lib/pkgconfig",
+        "/man",
+        "/share/doc",
+        "/share/gtk-doc",
+        "/share/man",
+        "/share/pkgconfig",
+        "*.la",
+        "*.a"
+    ],
+    "modules" : [
+    	{
+      "name": "libportal",
+      "builddir": true,
+      "buildsystem": "meson",
+      "config-opts": [
+        "-Ddocs=false",
+        "-Dvapi=false",
+        "-Dbackends=gtk4",
+        "-Dintrospection=true"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/flatpak/libportal/releases/download/0.6/libportal-0.6.tar.xz",
+          "sha256": "88a12c3ba71bc31acff7238c280de697d609cebc50830c3766776ec35abc6566"
+        }
+      ]
+    },
+
+    	{
+            "name" : "colortools-lentolen",
+            "buildsystem" : "simple",
+            "build-commands" : [
+                "pip3 install --prefix=/app colortools_lentolen-0.0.5-py3-none-any.whl"
+            ],
+            "sources" : [
+                {
+                    "type" : "file",
+                    "url" : "https://files.pythonhosted.org/packages/a1/e1/eaf2bc331d601587019ba28dcd00fa9c9a55f1e2a90f3f47ad266e9b9397/colortools_lentolen-0.0.5-py3-none-any.whl",
+                    "sha256" : "29662331297838e92c9ce15facba55e048121899a18e92490ac3fd8bacf0e80d"
+                }
+            ]
+       	},
+        {
+            "name" : "colortools-gui",
+            "builddir" : true,
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "file:///home/len/Projekte"
+                }
+            ]
+        }
+    ]
+}
